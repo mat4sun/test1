@@ -1,0 +1,62 @@
+Bin 0:
+Item 3 - weight: 6.2724609375  value: 6.2724609375
+Item 9 - weight: 16.072265625  value: 16.072265625
+Item 14 - weight: 0.4296875  value: 0.4296875
+Packed bin weight: 22.7744140625
+Packed bin value: 22.7744140625
+
+Bin 1:
+Item 0 - weight: 10.3876953125  value: 10.3876953125
+Item 4 - weight: 10.5390625  value: 10.5390625
+Item 8 - weight: 14.1474609375  value: 14.1474609375
+Item 11 - weight: 13.638671875  value: 13.638671875
+Item 16 - weight: 13.818359375  value: 13.818359375
+Item 19 - weight: 19.5224609375  value: 19.5224609375
+Item 22 - weight: 12.5927734375  value: 12.5927734375
+Packed bin weight: 94.646484375
+Packed bin value: 94.646484375
+
+Bin 2:
+Item 1 - weight: 11.3740234375  value: 11.3740234375
+Item 5 - weight: 15.60546875  value: 15.60546875
+Item 10 - weight: 13.798828125  value: 13.798828125
+Item 15 - weight: 13.7783203125  value: 13.7783203125
+Item 17 - weight: 13.34765625  value: 13.34765625
+Item 20 - weight: 17.3583984375  value: 17.3583984375
+Item 23 - weight: 1.001953125  value: 1.001953125
+Packed bin weight: 86.2646484375
+Packed bin value: 86.2646484375
+
+Bin 3:
+Item 2 - weight: 14.1357421875  value: 14.1357421875
+Item 6 - weight: 19.955078125  value: 19.955078125
+Item 7 - weight: 13.6923828125  value: 13.6923828125
+Item 12 - weight: 3.73046875  value: 3.73046875
+Item 13 - weight: 13.7998046875  value: 13.7998046875
+Item 18 - weight: 19.5009765625  value: 19.5009765625
+Item 21 - weight: 12.830078125  value: 12.830078125
+Packed bin weight: 97.64453125
+Packed bin value: 97.64453125
+
+---
+Total packed value: 301.330078125
+Total packed weight: 301.330078125 in 4 containers
+Total weight to be packed: 301.330078125
+Total value for items: 301.330078125
+
+def create_data_model():
+    """Create the data for the example."""
+    data = {}
+#     weights = [48, 30, 42, 36, 36, 48, 42, 42, 36, 24, 30, 30, 42, 36, 36]
+#     values = [10, 30, 25, 50, 35, 30, 15, 40, 30, 35, 45, 10, 20, 30, 25]
+    weights = np.array([10637, 11647, 14475, 6423, 10792, 15980, 20434, 14021, 14487, 16458,
+                        14130, 13966, 3820, 14131, 440, 14109, 14150, 13668, 19969, 19991,
+                        17775, 13138, 12895, 1026]) / 1024  # Hemvideos, Gb
+    values = weights
+    data['weights'] = weights
+    data['values'] = values
+    data['items'] = list(range(len(weights)))
+    data['num_items'] = len(weights)
+    data['bin_capacities'] = [24, 99, 99, 99]  # Blueray M-disc capacity in Gb with 1 Gb marginal
+    data['bins'] = list(range(len(data['bin_capacities'])))
+    return data
